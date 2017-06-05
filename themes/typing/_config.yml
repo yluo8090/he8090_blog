@@ -1,0 +1,39 @@
+# Lang
+language: zh-CN
+
+# Dark Mode
+dark: false
+
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  About: /about
+rss: /atom.xml
+
+# Content
+fancybox: true
+
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.ico
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+
+# Profile
+nickname: 记录自己，记录点滴
+description: 安静地度过人生的低潮期。好好睡觉，像一只冬眠的熊。锻炼身体，坚信无论是承受更深的低潮或是迎接高潮，好的体魄都用得着。和知心的朋友谈天，基本上不发牢骚，主要是回忆快乐的时光。多读书，看一些传记。一来增长知识，顺带还可瞧瞧别人倒霉的时候是怎么挺过去的。愿每一个人都可以被世界温柔以待。愿每一个人流的眼泪都是因为幸福.
+links:
+  Blog: /archives
+  新浪微博: http://weibo.com/337870009
+  Facebook: https://www.facebook.com/luoyao8090
+  Twitter : https://twitter.com/Charnel8945
+
+
+# Info
+## archive_footer_content: Lorem ipsum dolor sit amet, **consectetur adipiscing elit.** Fusce eget urna vitae velit *eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque* penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Archive
+## post_footer_content: ipsum dolor sit amet, **consectetur adipiscing elit.** Fusce eget urna vitae velit *eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque* penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post
