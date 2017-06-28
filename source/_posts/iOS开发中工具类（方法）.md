@@ -10,6 +10,8 @@ categories: 技术分享
 
 > 目录
 
+- UIGraphicsBeginImageContext消除锯齿
+- iOS线程
 - UIbutton图片和文字默认偏移（上下）
 - 判断设置是否越狱
 - 判断是否是数字
@@ -31,6 +33,7 @@ categories: 技术分享
 - 缓存图片到本地  (注意：需要指定缓存路径，获取到本地沙盒路径等)。
 - 图片裁剪（传入Rect）
 - 按尺寸压缩图片
+- UIImage两种加载方式比较
 
 ***
 
@@ -41,6 +44,51 @@ categories: 技术分享
 
 ***
 
+- UIGraphicsBeginImageContext消除锯齿
+最近在做连线的时候发现，斜线会有锯齿存在。查阅资料发现是像素点原因引起，以下只是简单解决的一种方式，有一定效果但不全面。仅做记录。
+
+```
+//方法1
+view.layer.contentsScale = [[UIScreen mainScreen] scale];
+
+//方法2
+CGContextRef context = UIGraphicsGetCurrentContext();
+CGContextSetAllowsAntialiasing(context,true);//开启自动去锯齿
+CGContextSetShouldAntialias(context, true);
+
+```
+
+- iOS线程
+> 一般来说，队列可分为两种类型：串行和并行。也可以分为系统队列和用户队列两种
+
+> 串行：
+dispatch_get_main_queue() 主线程队列，在主线程中执行
+dispatch_queue_create(DISPATCH_QUEUE_SERIAL) 自定义串行队列
+并行：
+dispatch_get_global_queue() 由系统维护的并行队列
+dispatch_queue_create(DISPATCH_QUEUE_CONCURRENT) 自定义并发队列
+
+> This function is the fundamental mechanism for submitting blocks to a dispatch queue. Calls to this function always return immediately after the block has been submitted and never wait for the block to be invoked. The target queue determines whether the block is invoked serially or concurrently with respect to other blocks submitted to that same queue. Independent serial queues are processed concurrently with respect to each other.
+
+> 该函数为向dispatch队列中提交block对象的最基础的机制。调用这个接口后将block提交后会马上返回，并不会等待block被调用。参数queue决定block对象是被串行执行还是并行执行。不同的串行队列将被并行处理。
+
+示例：
+
+```
+  //在主线程执行一个block
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"invoke in main thread.");
+    });
+```
+
+
+
+```
+  //异步执行一个block
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSLog(@"invoke in another thread which is in system thread pool.");
+    });
+```
 - UIbutton图片和文字默认偏移（上下）
 注意：传入需要设置的Button和文字和图片之间的垂直距离即可。
 
@@ -562,5 +610,23 @@ categories: 技术分享
         UIGraphicsEndImageContext();
     }
     return newImage;
+}
+```
+
+- UIImage两种加载方式比较
+在iOS中根据图片名或路径加载image方式就两种，`imageNamed`和`imageWithContentsOfFile`，今天主要说下这两者区别。
+
+> imageNamed加载图片会在内存中开辟空间对数据进行缓存，但是当APP内存警告时，不会主动对销毁这部分内存，所以针对多处使用同一个图片来说性能占优。
+imageWithContentsOfFile则是根据图片路径（全路径）去加载，不会建立缓存，在APP内存警告时会自动销毁这部分内存，所以内存占用占优。
+
+
+```
+//imageWithContentsOfFile使用方法
++ (UIImage *)getImageWithSourceOfPath:(NSString *)imageName{
+    if (imageName.length == 0 || imageName == nil) {
+        return [[UIImage alloc]init];
+    }
+    UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"png"]];
+    return image;
 }
 ```
