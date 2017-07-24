@@ -10,6 +10,7 @@ categories: 技术分享
 
 > 目录
 
+- 使用Reachability监测网络环境
 - UIGraphicsBeginImageContext消除锯齿
 - iOS线程
 - UIbutton图片和文字默认偏移（上下）
@@ -41,6 +42,35 @@ categories: 技术分享
 
 - ARC环境中引入MRC文件  加入`-fno-objc-arc`<br>
 - MRC环境引入ARC文件，加入：`-fobjc-arc`
+
+***
+- 使用Reachability监测网络环境
+
+```
+//注册通知、开启网络状况的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+
+//通知接收方法
+-(void)reachabilityChanged:(NSNotification*)note
+{
+    Reachability * reach = [note object];
+    NSParameterAssert([reach isKindOfClass: [Reachability class]]);
+    NetworkStatus status = [reach currentReachabilityStatus];
+
+    if (status == NotReachable) {
+        NSLog(@"Notification Says Unreachable");
+    }else if(status == ReachableViaWWAN){
+        NSLog(@"Notification Says mobilenet");
+    }else if(status == ReachableViaWiFi){
+        NSLog(@"Notification Says wifinet");
+    }
+
+}
+```
+> 需要导入 Reachability.h 和Reachability.m文件。下载地址：https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip
 
 ***
 

@@ -45,10 +45,10 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #about: /about
   archives: /archives
   categories: /categories
   tags: /tags
+  about: /about
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
@@ -321,7 +321,7 @@ disqus:
 #hypercomments_id:
 
 # Gentie productKey
-gentie_productKey: 47baf7576dfe4b8691fde3516e52e2c5
+# gentie_productKey: 47baf7576dfe4b8691fde3516e52e2c5
 
 # changyan
 changyan:
@@ -331,7 +331,7 @@ changyan:
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
-# youyan_uid: 2135471
+youyan_uid: 2135471
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
