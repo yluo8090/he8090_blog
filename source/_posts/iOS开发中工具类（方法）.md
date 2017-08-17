@@ -10,6 +10,8 @@ categories: 技术分享
 
 > 目录
 
+- 判断字符串是否为IP地址
+- 获取设备在局域网中的IP地址
 - 使用Reachability监测网络环境
 - UIGraphicsBeginImageContext消除锯齿
 - iOS线程
@@ -35,6 +37,54 @@ categories: 技术分享
 - 图片裁剪（传入Rect）
 - 按尺寸压缩图片
 - UIImage两种加载方式比较
+
+***
+- 判断字符串是否是IP地址
+
+```
+//判断是否是IP地址
+- (BOOL)isValidatIP:(NSString *)ipAddress{
+
+    NSString  *urlRegEx =@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    return [urlTest evaluateWithObject:ipAddress];
+
+}
+```
+
+
+***
+- 获取设备在局域网中的IP地址
+
+```
+//获取局域网IP
+- (NSString *)deviceIPAdress {
+    NSString *address = @"手机移动网络";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        temp_addr = interfaces;
+        while (temp_addr != NULL) {
+            if( (*temp_addr).ifa_addr->sa_family == AF_INET) {
+                if ([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                }
+            }
+
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    freeifaddrs(interfaces);
+    return address;
+}
+```
 
 ***
 
