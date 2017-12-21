@@ -45,10 +45,10 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
+  #about: /about
   archives: /archives
   categories: /categories
   tags: /tags
-  about: /about
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
@@ -235,7 +235,7 @@ excerpt_description: true
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
+  enable: true
   length: 150
 
 # Post meta display settings
