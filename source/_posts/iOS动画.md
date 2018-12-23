@@ -15,6 +15,7 @@ iOS中关键动画如下
 - CAAnimationGroup 组合动画 <br>
 注：以上动画必须加载到layer上执行
 
+<!-- more --> 
 ***
 - 基础动画1
 

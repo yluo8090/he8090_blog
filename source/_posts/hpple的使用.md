@@ -23,6 +23,8 @@ categories: 技术分享
 Objective-C解析HTML<后附 RSSI.html源代码>
 拿到rssi后面的值：
 
+<!-- more -->
+
 ```
 NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"RSSI" ofType:@"html"];
     NSData *htmlData = [NSData dataWithContentsOfFile:htmlPath];

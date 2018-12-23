@@ -11,6 +11,9 @@ categories: 技术分享
 本次主要对科大讯飞语音听写进行集成，需要到科大讯飞开放平台注册账号获得appid和下载对应的SDK。
 
 我使用的是语音听写。以下内容在科大讯飞官方文档中均有体现，如有疑问可以回复我。
+
+<!-- more -->
+
 ```
 @property (nonatomic, strong) IFlySpeechRecognizer *iFlySpeechRecognizer;
 ```

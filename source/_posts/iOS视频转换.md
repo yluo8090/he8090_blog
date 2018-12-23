@@ -8,6 +8,7 @@ tags:
 categories: 技术分享
 ---
 iOS原生照片库视频格式为.mov，内存占用大，在发送文件中对它进行压缩为mp4。
+<!-- more -->
 
 {% codeblock lang:objc %}
 - (void)movFileTransformToMP4WithSourcePath:(NSString *)sourcePath completion:(void(^)(NSString *Mp4FilePath))comepleteBlock session:(void(^)(AVAssetExportSession *session))sessionBlock

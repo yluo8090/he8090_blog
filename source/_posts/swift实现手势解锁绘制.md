@@ -19,6 +19,7 @@ swift与object-c的CGContextRef不一样，在swift中统一使用CGContext进�
 本示例采用9*button进行绘制，关闭button交互事件，通过touchesBegan系列方法对滑动路径进行跟踪和绘制（imageView）。
 
 以下为全部代码：
+<!-- more --> 
 ```
 import UIKit
 

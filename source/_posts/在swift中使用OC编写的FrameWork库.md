@@ -10,6 +10,8 @@ categories: 技术分享
 
 说到iOS开发就离不开三方库的支持，有一些开源和闭源的SDK使用。
 
+<!-- more -->
+
 1、集成OC的frameWork需要在swift工程中新建一个用于桥接的 .h 文件 桥接文件中 #import<>相应的文件或者库。
 
 2、新建完成之后，在TAGETS - building setting - 搜索（bri）-Objective-C  bridging Heather - （添加新建的.h桥接文件，建议使用相对路径$(SRCROOT)）

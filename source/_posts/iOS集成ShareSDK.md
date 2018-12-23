@@ -19,6 +19,8 @@ categories: 技术分享
 
 4、在  AppDelegate.m 中 
 {% codeblock lang:objc %}
+<!-- more -->
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions ；
 {% endcodeblock %}
 方法中注册ShareSDK。

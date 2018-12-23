@@ -22,6 +22,8 @@ mac os 10.13
 9、在build phases ->link binaru with libray中添加需要的库文件。
 10、在实际真机运行中可能会要求关闭bitcode，关闭即可运行。
 
+<!-- more -->
+
 ```
 myBuildBoost.sh
 

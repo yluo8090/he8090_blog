@@ -12,6 +12,8 @@ AVSystemController_SystemVolumeDidChangeNotification
 AVAudioSessionRouteChangeNotification
 {% endcodeblock %}
 
+<!-- more -->
+
 1、获取耳机插拔事件Key
 {% codeblock lang:objc %}
 AVAudioSessionRouteChangeNotification
@@ -63,5 +65,3 @@ break;
 }
 }
 {% endcodeblock %}
-
-

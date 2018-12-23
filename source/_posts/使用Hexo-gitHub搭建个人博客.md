@@ -1,7 +1,7 @@
 ---
 title: 使用Hexo+gitHub搭建个人博客
 date: 2017-05-29 11:32:54
-tags: 
+tags:
     - Hexo
     - gitHub
     - 博客
@@ -27,6 +27,8 @@ type: git
 repo: https://github.com/misszero8090/misszero8090.github.io.git
 
 branch: master
+
+<!-- more -->
 
 # 然后执行命令：
 
@@ -117,7 +119,7 @@ repo: git@gitcafe.com:username/username.git,gitcafe-pages
 repo: git@github.com:username/username.github.io.git,master
 
 # Disqus #Disqus评论系统
-disqus_shortname: 
+disqus_shortname:
 
 #plugins: #插件，例如生成 RSS 和站点地图的
 - hexo-generator-feed
