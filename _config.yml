@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 靠北’s Notes
-subtitle: 我用文字记忆，青春年华。
+title: luoyyyy’s Notes
+subtitle: 我用文字记忆青春年华。
 description:
-author:	yao
+author:	luoyyy
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://he8090.cn
+url: http://luoyyy.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -69,5 +69,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
  type: git
- repo: https://github.com/misszero8090/misszero8090.github.io.git
+ repo: git@github.com:he8090/yluo8090.github.io
 branch: master

@@ -37,6 +37,8 @@ categories: 技术分享
 - 图片裁剪（传入Rect）
 - 按尺寸压缩图片
 - UIImage两种加载方式比较
+- 设置阴影
+- 价格转换为每隔3位用逗号分割
 
 <!-- more --> 
 ***
@@ -709,5 +711,51 @@ imageWithContentsOfFile则是根据图片路径（全路径）去加载，不会
     }
     UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"png"]];
     return image;
+}
+```
+
+- 阴影
+```
+/// 设置阴影
+/// @param layer 阴影作用layer
+/// @param offset 偏移量
+/// @param cornerRadius layer半径
+/// @param shadowRadius 阴影半径
+/// @param shadowOpacity 阴影透明度
+/// @param shadowColor 阴影颜色
+/// @param backgroundColor 背景色
+
+- (void)setShadowWithLayer:(CALayer *)layer offset:(CGSize)offset cornerRadius:(CGFloat)cornerRadius shadowRadius:(CGFloat)shadowRadius shadowOpacity:(CGFloat)shadowOpacity shadowColor:(UIColor *)shadowColor backgroundColor:(UIColor *)backgroundColor{
+    layer.backgroundColor = backgroundColor.CGColor;
+    layer.shadowOpacity = shadowOpacity;//阴影透明度
+    layer.shadowColor = shadowColor.CGColor;//阴影颜色
+    layer.shadowOffset = offset;//阴影偏移量
+    layer.shadowRadius = shadowRadius;//模糊计算半径
+    layer.cornerRadius = cornerRadius;
+    layer.masksToBounds = NO;
+}
+```
+
+- 价格转换为每隔3位用逗号分割
+```
+/**
+ 价格转换为每隔3位用逗号分割
+ show 是否显示小数点后面
+ */
+- (NSString *)changePriceWithNumber:(float)value showPoint:(BOOL)show {
+    NSString *valueStr = @"";
+    NSString *format = @"";
+    if (show) {
+        valueStr = [NSString stringWithFormat:@"%.2f", value];
+        format = @",###.##";
+    } else {
+        valueStr = [NSString stringWithFormat:@"%.f", value];
+        format = @",###";
+    }
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:valueStr];
+    NSNumberFormatter *numberFormatter =   [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numberFormatter setPositiveFormat:format];
+    return [numberFormatter stringFromNumber:decNumber];
 }
 ```
